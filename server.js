@@ -5,6 +5,9 @@ app.use(express.json());
 
 const AccountModel = require("./models/account");
 
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 app.post("/register", (req, res, next) => {
   var username = req.body.username;
   var password = req.body.password;
