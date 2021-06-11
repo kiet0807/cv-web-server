@@ -30,7 +30,7 @@ app.post("/register", (req, res, next) => {
       res.json("Tao tai khoan thanh cong");
     })
     .catch((err) => {
-      err;
+      res.json(err);
     });
 });
 
