@@ -6,9 +6,10 @@ app.use(express.json());
 const AccountModel = require("./models/account");
 
 app.post("/register", (req, res, next) => {
-  res.json("register");
   var username = req.body.username;
   var password = req.body.password;
+
+  res.json(username, password);
 
   AccountModel.findOne({
     username: username,
@@ -33,9 +34,10 @@ app.post("/register", (req, res, next) => {
 });
 
 app.post("/login", (req, res, next) => {
-  res.json("login");
   var username = req.body.username;
   var password = req.body.password;
+
+  res.json(username, password);
 
   AccountModel.findOne({
     username: username,
@@ -61,6 +63,6 @@ app.get("/home", (req, res, next) => {
   res.json("home");
 });
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT, () => {
   console.log(`Server started on port`);
 });
