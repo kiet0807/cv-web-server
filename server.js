@@ -9,7 +9,7 @@ app.post("/register", (req, res, next) => {
   var username = req.body.username;
   var password = req.body.password;
 
-  res.json(username, password);
+  console.log(username, password);
 
   AccountModel.findOne({
     username: username,
@@ -37,7 +37,7 @@ app.post("/login", (req, res, next) => {
   var username = req.body.username;
   var password = req.body.password;
 
-  res.json(username, password);
+  console.log(username, password);
 
   AccountModel.findOne({
     username: username,
