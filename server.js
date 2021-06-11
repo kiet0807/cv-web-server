@@ -6,6 +6,7 @@ app.use(express.json());
 const AccountModel = require("./models/account");
 
 app.post("/register", (req, res, next) => {
+  res.json("register");
   var username = req.body.username;
   var password = req.body.password;
 
@@ -32,6 +33,7 @@ app.post("/register", (req, res, next) => {
 });
 
 app.post("/login", (req, res, next) => {
+  res.json("login");
   var username = req.body.username;
   var password = req.body.password;
 
