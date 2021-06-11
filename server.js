@@ -52,9 +52,9 @@ app.post("/login", (req, res, next) => {
 });
 
 app.get("/", (req, res, next) => {
-  res.json("Home");
+  res.json("Server");
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log(`Server started on port`);
 });
