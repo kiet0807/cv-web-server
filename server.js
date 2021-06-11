@@ -1,7 +1,5 @@
 const express = require("express");
 var app = express();
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
 
 const AccountModel = require("./models/account");
 
@@ -14,7 +12,6 @@ app.post("/register", (req, res, next) => {
 
   AccountModel.findOne({
     username: username,
-    password: password,
   })
     .then((data) => {
       if (data) {
@@ -27,10 +24,10 @@ app.post("/register", (req, res, next) => {
       }
     })
     .then((data) => {
-      res.json("Tao tai khoan thanh cong");
+      res.json("Tạo tài khoản thành công");
     })
     .catch((err) => {
-      res.json(err);
+      res.status(500).json("Tao tai khoản thất bại");
     });
 });
 
@@ -54,12 +51,12 @@ app.post("/login", (req, res, next) => {
     });
 });
 
+var accountRouter = require("./routers/account");
+
+app.use("/api/account", accountRouter);
+
 app.get("/", (req, res, next) => {
   res.json("Server");
-});
-
-app.get("/home", (req, res, next) => {
-  res.json("home");
 });
 
 app.listen(process.env.PORT || 3000, () => {
