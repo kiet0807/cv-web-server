@@ -3,9 +3,9 @@ var router = express.Router();
 
 const AccountModel = require("../models/account");
 
-router.get("/:id", (req, res, next) => {
+router.get("/", (req, res, next) => {
   var id = req.params.id;
-  AccountModel.findById({ id })
+  AccountModel.find({})
     .then((data) => {
       res.json(data);
     })
