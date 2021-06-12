@@ -1,11 +1,8 @@
 const mongoose = require("mongoose");
-mongoose.connect(
-  "mongodb+srv://kiet87:kiet0347551122@cluster0.nltqm.mongodb.net/account?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+mongoose.connect("mongodb://localhost/my_database", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const Schema = mongoose.Schema;
 
