@@ -10,7 +10,7 @@ router.get("/", (req, res, next) => {
       res.json(data);
     })
     .catch((err) => {
-      res.status(500).json("Lỗi server: ", err);
+      res.status(500).json(err);
     });
 });
 
