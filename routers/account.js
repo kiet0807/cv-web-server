@@ -10,7 +10,7 @@ router.get("/", (req, res, next) => {
       res.json(data);
     })
     .catch((err) => {
-      res.status(500).json("Lỗi server");
+      res.status(500).json("Lỗi server: ", err);
     });
 });
 
@@ -25,7 +25,7 @@ router.post("/", (req, res, next) => {
       res.json("Thêm tài khoản thành công");
     })
     .catch((err) => {
-      res.status(500).json("Lỗi server");
+      res.status(500).json("Lỗi server: ", err);
     });
 });
 
@@ -39,7 +39,7 @@ router.put("/:id", (req, res, next) => {
       res.json("Cập nhật thành công");
     })
     .catch((err) => {
-      res.status(500).json("Lỗi server");
+      res.status(500).json("Lỗi server: ", err);
     });
 });
 
