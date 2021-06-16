@@ -3,6 +3,8 @@ var router = express.Router();
 
 const AccountModel = require("./models/account");
 
+router.use(express.static("router"));
+
 router.get("/", (req, res, next) => {
   var id = req.params.id;
   AccountModel.find({})
