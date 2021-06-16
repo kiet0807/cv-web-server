@@ -1,9 +1,7 @@
 const express = require("express");
 var app = express();
-
-app.use(express.static("public"));
-
 const AccountModel = require("./models/account");
+var accountRouter = require("./router");
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -33,10 +31,10 @@ app.post("/register", (req, res, next) => {
       }
     })
     .then((data) => {
-      res.json("Tạo tài khoản thành công");
+      res.status(201).json("Tạo tài khoản thành công");
     })
     .catch((err) => {
-      res.status(500).json("Tao tai khoản thất bại");
+      res.status(400).json("Tao tai khoản thất bại");
     });
 });
 
@@ -52,7 +50,7 @@ app.post("/login", (req, res, next) => {
       if (data) {
         res.json("Đăng nhập thành công");
       } else {
-        res.status(400).json("Đăng nhập thất bại");
+        res.status(202).json("Tài khoản không tồn tại");
       }
     })
     .catch((err) => {
@@ -60,15 +58,12 @@ app.post("/login", (req, res, next) => {
     });
 });
 
-var accountRouter = require("./routers/account");
-
 app.use("/api/account", accountRouter);
 
 app.get("/", (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.send("Server");
+  res.json("CV web server");
 });
 
 app.listen(process.env.PORT || 3001, () => {
-  console.log(`Server started on port`);
+  console.log(`Server đã chạy trên port`);
 });

@@ -1,22 +1,20 @@
 const mongoose = require("mongoose");
 
-const mongoAtlasUri =
+const database_URL =
   "mongodb+srv://kiet87:kiet0347551122@cluster0.nltqm.mongodb.net/account?retryWrites=true&w=majority";
 
 try {
   // Connect to the MongoDB cluster
   mongoose.connect(
-    mongoAtlasUri,
+    database_URL,
     { useNewUrlParser: true, useUnifiedTopology: true },
-    () => console.log(" Mongoose blog mindx is connected")
+    () => console.log("Mongoose đã kết nối")
   );
 } catch (e) {
-  console.log("could not connect");
+  console.log("Không thể kết nối với Mongoose");
 }
 
-const Schema = mongoose.Schema;
-
-const AccountSchema = new Schema(
+const AccountSchema = new mongoose.Schema(
   {
     username: String,
     password: String,
