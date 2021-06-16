@@ -1,13 +1,17 @@
 const mongoose = require("mongoose");
 
-const MONGODB_URI =
-  "mongodb+srv://kiet87:kiet0347551122@cluster0.nltqm.mongodb.net/account?retryWrites=true&w=majority";
+const MONGODB_URI = "mongodb://localhost/my_database";
 
 try {
   // Connect to the MongoDB cluster
   mongoose.connect(
     MONGODB_URI,
-    { useNewUrlParser: true, useUnifiedTopology: true },
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+      useCreateIndex: true,
+    },
     () => console.log("Mongoose đã kết nối")
   );
 } catch (e) {
